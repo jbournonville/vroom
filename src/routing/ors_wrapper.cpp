@@ -44,7 +44,7 @@ std::string OrsWrapper::build_query(const std::vector<Location>& locations,
   }
   
   // avoid toll roads
-  body += "options:{avoid_features: [\"tollways\"], avoid_borders: \"all\"}"
+  body += ",options:{avoid_features: [\"tollways\"], avoid_borders: \"all\"}"
   
   body += "}";
 

@@ -42,6 +42,10 @@ std::string OrsWrapper::build_query(const std::vector<Location>& locations,
   if (!extra_args.empty()) {
     body += "," + extra_args;
   }
+  
+  // avoid toll roads
+  body += "options:{avoid_features: [\"tollways\"], avoid_borders: \"all\"}"
+  
   body += "}";
 
   // Building query for ORS

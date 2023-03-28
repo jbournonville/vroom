@@ -25,8 +25,7 @@ OrsWrapper::OrsWrapper(const std::string& profile, const Server& server)
 std::string OrsWrapper::build_query(const std::vector<Location>& locations,
                                     const std::string& service,
                                     const std::string& extra_args) const {
-    std::cerr << "[SERVICE] " << service << std::endl;
-
+  std::cerr << "[SERVICE] " << service << std::endl;
 
   // Adding locations.
   std::string body = "{\"";
@@ -46,8 +45,10 @@ std::string OrsWrapper::build_query(const std::vector<Location>& locations,
     body += "," + extra_args;
   }
   
-  // avoid toll roads
-  body += ",\"options\":{\"avoid_features\": [\"tollways\"], \"avoid_borders\": \"all\"}";
+  if (service == "directions"){
+    // avoid toll roads
+    body += ",\"options\":{\"avoid_features\": [\"tollways\"], \"avoid_borders\": \"all\"}";
+  }
   
   body += "}";
 

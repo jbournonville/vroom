@@ -45,8 +45,10 @@ std::string OrsWrapper::build_query(const std::vector<Location>& locations,
     body += "," + extra_args;
   }
 
-  // avoid toll roads
-  body += ",\"options\":{\"avoid_features\": [\"tollways\"]}";
+  if (service == "directions") {
+    // avoid toll roads
+    body += ",\"options\":{\"avoid_features\": [\"tollways\"]}";
+  }
 
   body += "}";
 

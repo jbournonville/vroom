@@ -9,7 +9,6 @@ All rights reserved (see LICENSE).
 
 #include <asio.hpp>
 #include <asio/ssl.hpp>
-#include <iostream>
 
 #include "routing/http_wrapper.h"
 
@@ -215,8 +214,6 @@ void HttpWrapper::add_route_info(Route& route) const {
     build_query(non_break_locations, _route_service, _extra_args);
 
   std::string json_string = this->run_query(query);
-
-  std::cerr << "[RESULT] " << json_string << std::endl;
 
   rapidjson::Document json_result;
   parse_response(json_result, json_string);

@@ -47,10 +47,13 @@ std::string OrsWrapper::build_query(const std::vector<Location>& locations,
   
   if (service == "directions"){
     // avoid toll roads
-    body += ",\"options\":{\"avoid_features\": [\"tollways\"], \"avoid_borders\": \"all\"}";
+    body += ",\"options\":{\"avoid_features\": [\"tollways\"]}";
   }
   
   body += "}";
+
+  std::cerr << "[BODY] " << body << std::endl;
+ 
 
   // Building query for ORS
   std::string query = "POST /ors/v2/" + service + "/" + profile;

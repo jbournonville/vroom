@@ -44,16 +44,13 @@ std::string OrsWrapper::build_query(const std::vector<Location>& locations,
   if (!extra_args.empty()) {
     body += "," + extra_args;
   }
-  
-  if (service == "directions"){
-    // avoid toll roads
-    body += ",\"options\":{\"avoid_features\": [\"tollways\"]}";
-  }
-  
+
+  // avoid toll roads
+  body += ",\"options\":{\"avoid_features\": [\"tollways\"]}";
+
   body += "}";
 
   std::cerr << "[BODY] " << body << std::endl;
- 
 
   // Building query for ORS
   std::string query = "POST /ors/v2/" + service + "/" + profile;
